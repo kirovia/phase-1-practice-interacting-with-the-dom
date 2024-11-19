@@ -17,3 +17,8 @@ setInterval(() => {
     counter += 1;
     counterDisplay.innerText = counter;
 }, 1000);
+
+// increment & decrement counter manually
+
+minus.addEventListener('click', () => {counter -= 1; counterDisplay.innerText = counter});
+plus.addEventListener('click', () => {counter += 1; counterDisplay.innerText = counter});

@@ -17,7 +17,7 @@ let tester;
 
 // counter functionality
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     tester = setInterval(() => {counter += 1;counterDisplay.innerText = counter;}, 1000)
 })
 
@@ -60,4 +60,14 @@ pause.addEventListener('click', () => {
         heart.disabled = false;
         submit.disabled = false;
     }        
+});
+
+// comments function
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const p = document.createElement('p');
+    p.innerText = input.value;
+    comments.append(p);
+    input.value = '';
 });

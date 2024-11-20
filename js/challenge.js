@@ -13,13 +13,13 @@ const form = document.getElementById('comment-form');
 const input = document.getElementById('comment-input');
 const submit = document.getElementById('submit');
 let likesCounterObject = {};
+let tester;
 
 // counter functionality
 
-setInterval(() => {
-    counter += 1;
-    counterDisplay.innerText = counter;
-}, 1000);
+document.addEventListener('DOMContentLoaded', function() {
+    tester = setInterval(() => {counter += 1;counterDisplay.innerText = counter;}, 1000)
+})
 
 // manually increment & decrement counter
 
@@ -39,4 +39,25 @@ heart.addEventListener('click', () => {
     } else {
         likes.append(li);
     }
+});
+
+// pause button
+
+pause.addEventListener('click', () => {
+    if (pause.innerText === 'pause') {
+        pause.innerText = 'resume';
+        clearInterval(tester);
+        tester = null;
+        plus.disabled = true;
+        minus.disabled = true;
+        heart.disabled = true;
+        submit.disabled = true;
+    } else {
+        tester = setInterval(() => {counter += 1;counterDisplay.innerText = counter;}, 1000);
+        pause.innerText = 'pause';
+        plus.disabled = false;
+        minus.disabled = false;
+        heart.disabled = false;
+        submit.disabled = false;
+    }        
 });
